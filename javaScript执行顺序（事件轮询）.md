@@ -1,5 +1,5 @@
 @(JavaScript)
-# javsScript执行顺序
+# javsScript执行顺序（事件轮询机制）
 最近Vue源码看到$nextTick里面牵扯到 javsScript执行顺序有点晕所以专门整理了一下。
 
 众所周知javaScript是单线程，所以异步操作就经常出现。要想真正弄懂javaScript的执行顺序就需要去真正理解异步任务的执行顺序，而这个过程的关键就是去理解javsScript的事件轮询机制。在学习事件轮询机制之前要先去理解任务队列。
@@ -78,15 +78,16 @@ micro-task中没有源任务队列，只有一个队列。在我执行代码的�
 ```
 
 答案：4、9、11、5、10、2、3、6、7、8、1。下面对每个输出做了一个简单的解析
-4：同步任务主线程执行
-9：同步任务主线程执行
-11：macro-task中javascript(整体代码)任务执行完成，开始执行micro-task。其中process.nextTick优先级高先输出
-5：micro-task任务
-10：micro-task任务，此时当前micro-task任务队列已经全部执行完成一次事件轮询结束。
-2：开始第二次事件轮询，其中macro-task任务队列中当前有setTimeout和setImmediate两个源任务队列，其中setTimeout大概率先执行与setImmediate，查资料说是观察者的原因还没有仔细研究。所以开始执行setTimeout的源任务队列其中有三个任务，setTimeout、setInterval为同一源任务。源任务里的执行顺序根据加入的先后顺序执行。所以首先输出2
-3：setTimeout源任务队列任务
-6：setTimeout源任务队列任务。当前setTimeout源任务队列任务已经完成。在这个setTimeout中新建了一个Promise，所以这里又加入到micro-task中一个任务。
-7：同步任务主线程执行
-8：前面setTimeout源任务队列任务直线完成之后macro-task中的一个任务已经执行完成，此时开始执行micro-task中的任务。
-当前micro-task中一个一个刚刚在6中新建的promise所以输出，第二次轮询结束。
-1：第三次轮询开始当前macro-task中只有一个setImmediate源任务队列，执行完成之后所有都已经完成结束。
+
+4：同步任务主线程执行  
+9：同步任务主线程执行  
+11：macro-task中javascript(整体代码)任务执行完成，开始执行micro-task。其中process.nextTick优先级高先输出  
+5：micro-task任务  
+10：micro-task任务，此时当前micro-task任务队列已经全部执行完成一次事件轮询结束。  
+2：开始第二次事件轮询，其中macro-task任务队列中当前有setTimeout和setImmediate两个源任务队列，其中setTimeout大概率先执行与setImmediate，查资料说是观察者的原因还没有仔细研究。所以开始执行setTimeout的源任务队列其中有三个任务，setTimeout、setInterval为同一源任务。源任务里的执行顺序根据加入的先后顺序执行。所以首先输出2  
+3：setTimeout源任务队列任务  
+6：setTimeout源任务队列任务。当前setTimeout源任务队列任务已经完成。在这个setTimeout中新建了一个Promise，所以这里又加入到micro-task中一个任务。  
+7：同步任务主线程执行  
+8：前面setTimeout源任务队列任务直线完成之后macro-task中的一个任务已经执行完成，此时开始执行micro-task中的任务。  
+当前micro-task中一个一个刚刚在6中新建的promise所以输出，第二次轮询结束。  
+1：第三次轮询开始当前macro-task中只有一个setImmediate源任务队列，执行完成之后所有都已经完成结束。  
