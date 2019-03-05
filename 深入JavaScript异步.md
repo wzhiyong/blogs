@@ -175,5 +175,16 @@ function* async(){
 }
 generator(async)// 这里 请求A和请求B就会顺序执行。
 ```
-这样写异步就不许要考虑太多的作用域，解耦等问题而且编码符合正常的同步逻辑，不会出现回调函数的回调地狱或者promise好多的.then.catch，对于后续的维护和其他的的阅读都十分友好。
+这样写异步就不许要考虑太多的作用域，解耦等问题而且编码符合正常的同步逻辑，不会出现回调函数的回调地狱或者promise好多的.then.catch，对于后续的维护和其他的的阅读都十分友好，比较好的generator封装库是co函数库，他就是写了一个让generator自动执行的执行器。
 ### async/await
+async/await是ES7中加入的新特性，也是可以更好处理异步，很多人都说async/await是异步的终极解决方法。
+``` javascript
+async function test(){
+	let a = await post('...') // 这里要返回一个promise对象，不然也会转化成一个promise对象;
+	.....
+	let b= await post('...') 
+}
+```
+是不是感觉和generator很像，特殊的函数标识（*/async），和特殊的运算符（yiled/await），不过对于异步函数明显后者两个名字明显让人更好的理解这是一个异步的操作。await会等待post返回的promise对象状态变为fulfilled或者reject然后才继续往下执行。这里和上面的generator封装的使用promise自动执行的效果和原理都极为相似。他就是将generator的自动执行器封装了起来，做了更好的优化。如果这里返回的不是promise对象await会让他转化一个promise。
+#### 异常处理
+使用async/await时推荐使用try...catch处理异常，因为这样更好的理解和优美，当然也可以通过.catch来捕获错误，但是我们使用aync/await让代码已经看上不很不像‘异步’了，如果用上.catch就不那么完美了。
