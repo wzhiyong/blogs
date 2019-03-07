@@ -5,7 +5,7 @@
 ## ÎªÊ²Ã´ÐèÒªÒì²½£¿
 ÒòÎªJavaScriptÊÇµ¥Ïß³ÌµÄ£¬ËüÐèÒªÒì²½ÕâÖÖ»úÖÆÈÃ´úÂë¸ü¸ßÐ§µÄÖ´ÐÐ¡£ÀàËÆhttpÇëÇó£¬ÎÄ¼þ²Ù×÷ÕâÖÖºÄÊ±µÄ²Ù×÷Èç¹û²»Òì²½Ö´ÐÐÄÇÃ´½«Ê®·ÖµÄ¿¨¶Ù¡£
 ## ÈçºÎÊµÏÖ£¿
-ÊµÏÖµÄ·½Ê½Ä¿Ç°Ö÷ÒªÓÐÈýÖÖ»Øµ÷º¯Êý¡¢Promise¡¢Generator ¡£ÆäÖÐ»Øµ÷º¯ÊýÊÇ×îÔçµÄÊµÏÖ·½Ê½£¬ÔÚES6ÖÐ¼ÓÈëÁËPromiseºÍGenerator¡£Ê¹ÓÃÄÄÒ»ÖÖ¸öÈËÈÏÎªÊÇÈ¡¾öÓÚÒì²½²Ù×÷µÄ¸´ÔÓ³Ì¶È£¬ÀýÈçÉè¼Æ¶àÇ¶Ì×µÄÊ¹ÓÃºóÁ½Õß¾Í±È½ÏºÃ£¬Èç¹ûÖ»ÓÐÒ»²ã»Øµ÷º¯Êý¸ü¼ÓµÄ¼ò½àÃ÷ÁË¡£
+ÊµÏÖµÄ·½Ê½Ä¿Ç°Ö÷ÒªÓÐËÄÖÖ»Øµ÷º¯Êý¡¢Promise¡¢Generator¡¢async/await ¡£ÆäÖÐ»Øµ÷º¯ÊýÊÇ×îÔçµÄÊµÏÖ·½Ê½£¬ÔÚES6ÖÐ¼ÓÈëÁËPromiseºÍGeneratorÁ½¸öÒì²½½â¾ö·½°¸£¬ES7ÖÐ¼ÓÈëÁËasync/await£¬Ê¹ÓÃÄÄÒ»ÖÖ¸öÈËÈÏÎªÊÇÈ¡¾öÓÚÒì²½²Ù×÷µÄ¸´ÔÓ³Ì¶È£¬Èç¹û¶¼ÊÇÖ»ÓÐÒ»²ãµÄÒì²½²Ù×÷Ã¿Ò»¸ö¶¼¿ÉÈ¡£¬²»¹ý»Øµ÷º¯Êý¸ü¼òµ¥µÄÊ¹ÓÃ·½Ê½¿ÉÄÜ¸ü·½±ãºÍ¼ò½à¡£Èç¹ûÐèÒª¶à²ãÇ¶Ì×µÄÊ¹ÓÃºó¼¸Õß£¬µ«ÊÇÍùÍùÒµÎñ¿ª·¢¹ý³ÌÖÐ¼¸²ãµÄÒì²½Ç¶Ì×¶¼ÊÇÎÞ·¨Ô¤²âµ½µÄ£¬ËùÒÔ»¹ÊÇ²»ÍÆ¼öÊ¹ÓÃ»Øµ÷º¯Êý¡£ºóÃæ¼¸ÕßÒòÎªÊÇÐÂ¼ÓÈëµÄÌØÐÔ¼æÈÝÐÔÊÇÖ÷ÒªÎÊÌâ£¬Ä¿Ç°ÔËÐÐÔÚÓÎÀÀÆ÷ÉÏµÄ´úÂëÖ÷ÒªÊ¹ÓÃµÄ½â¾ö·½°¸ÊÇPromise,ÔÚÐ´nodeÊ±Ê¹ÓÃasync/await¸üºÃ¡£
 ### »Øµ÷º¯Êý
 »Øµ÷º¯ÊýÊÇÊ®·Ö¼òµ¥·½±ãµÄÒ»ÖÖÒì²½Ö´ÐÐ·½Ê½£¬¾ÍÊÇ°Ñ½«À´ÒªÖ´ÐÐµÄº¯Êý·ÅÔÚÒì²½Íê³ÉÊ±ÄÜ·ÃÎÊµ½µÄÉÏÏÂÎÄÖÐ²¢µ÷ÓÃ¡£
 ```javascript
@@ -182,9 +182,11 @@ async/awaitÊÇES7ÖÐ¼ÓÈëµÄÐÂÌØÐÔ£¬Ò²ÊÇ¿ÉÒÔ¸üºÃ´¦ÀíÒì²½£¬ºÜ¶àÈË¶¼Ëµasync/awaitÊÇÒì²
 async function test(){
 	let a = await post('...') // ÕâÀïÒª·µ»ØÒ»¸öpromise¶ÔÏó£¬²»È»Ò²»á×ª»¯³ÉÒ»¸öpromise¶ÔÏó;
 	.....
-	let b= await post('...') 
+	let b = await post('...') 
 }
 ```
-ÊÇ²»ÊÇ¸Ð¾õºÍgeneratorºÜÏñ£¬ÌØÊâµÄº¯Êý±êÊ¶£¨*/async£©£¬ºÍÌØÊâµÄÔËËã·û£¨yiled/await£©£¬²»¹ý¶ÔÓÚÒì²½º¯ÊýÃ÷ÏÔºóÕßÁ½¸öÃû×ÖÃ÷ÏÔÈÃÈË¸üºÃµÄÀí½âÕâÊÇÒ»¸öÒì²½µÄ²Ù×÷¡£await»áµÈ´ýpost·µ»ØµÄpromise¶ÔÏó×´Ì¬±äÎªfulfilled»òÕßrejectÈ»ºó²Å¼ÌÐøÍùÏÂÖ´ÐÐ¡£ÕâÀïºÍÉÏÃæµÄgenerator·â×°µÄÊ¹ÓÃpromise×Ô¶¯Ö´ÐÐµÄÐ§¹ûºÍÔ­Àí¶¼¼«ÎªÏàËÆ¡£Ëû¾ÍÊÇ½«generatorµÄ×Ô¶¯Ö´ÐÐÆ÷·â×°ÁËÆðÀ´£¬×öÁË¸üºÃµÄÓÅ»¯¡£Èç¹ûÕâÀï·µ»ØµÄ²»ÊÇpromise¶ÔÏóawait»áÈÃËû×ª»¯Ò»¸öpromise¡£
+ÊÇ²»ÊÇ¸Ð¾õºÍgeneratorºÜÏñ£¬ÌØÊâµÄº¯Êý±êÊ¶£¨*/async£©£¬ºÍÌØÊâµÄÔËËã·û£¨yiled/await£©£¬²»¹ý¶ÔÓÚÒì²½º¯ÊýÃ÷ÏÔºóÕßÁ½¸öÃû×ÖÃ÷ÏÔÈÃÈË¸üºÃµÄÀí½âÕâÊÇÒ»¸öÒì²½µÄ²Ù×÷¡£await»áµÈ´ýpost·µ»ØµÄpromise¶ÔÏó×´Ì¬±äÎªfulfilled»òÕßrejectÈ»ºó²Å¼ÌÐøÍùÏÂÖ´ÐÐ¡£async/awaitºÍÉÏÃæµÄgenerator·â×°µÄÊ¹ÓÃpromise×Ô¶¯Ö´ÐÐµÄÐ§¹ûºÍÔ­Àí¶¼¼«ÎªÏàËÆ£¬Ëû¾ÍÊÇ½«generatorµÄ×Ô¶¯Ö´ÐÐÆ÷·â×°ÁËÆðÀ´£¬×öÁË¸üºÃµÄÓÅ»¯¡£
 #### Òì³£´¦Àí
 Ê¹ÓÃasync/awaitÊ±ÍÆ¼öÊ¹ÓÃtry...catch´¦ÀíÒì³££¬ÒòÎªÕâÑù¸üºÃµÄÀí½âºÍÓÅÃÀ£¬µ±È»Ò²¿ÉÒÔÍ¨¹ý.catchÀ´²¶»ñ´íÎó£¬µ«ÊÇÎÒÃÇÊ¹ÓÃaync/awaitÈÃ´úÂëÒÑ¾­¿´ÉÏ²»ºÜ²»Ïñ¡®Òì²½¡¯ÁË£¬Èç¹ûÓÃÉÏ.catch¾Í²»ÄÇÃ´ÍêÃÀÁË¡£
+## ×Ü½á
+ÉÏÃæµÄ¼¸ÖÖ·½Ê½ÆäÊµ¶¼ÄÜ½â¾öÎÒÃÇµÄÐèÇó£¬µ«ÊÇ´Ó½¡×³ÐÔ¡¢¿ÉÎ¬»¤ÐÔ¡¢¿É¶ÁÐÔ·½Ãæasync/await×îÓÅ£¬µ«ÊÇÓÉÓÚÊÜÓÎÀÀÆ÷»·¾³µÄ¼æÈÝÏÞÖÆ¿ÉÒÔÔÚÓÎÀÀÆ÷»·¾³ÖÐÊ¹ÓÃPromiseÀ´½â¾ö£¬ÔÚnode»·¾³ÖÐÒª¾¡Á¿È¥Óµ±§×îÐÂµÄ×îºÃµÄ½â¾ö·½°¸£¬»Øµ÷º¯ÊýËäÈ»ÓÐËûµÄ¿ÉÈ¡Ö®´¦£¬µ«ÊÇ´Ó³¤Ô¶½Ç¶ÈÀ´¿´£¬²»ÍÆ¼öÊ¹ÓÃ¡£
