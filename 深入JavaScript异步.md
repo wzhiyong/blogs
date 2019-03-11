@@ -188,5 +188,17 @@ async function test(){
 是不是感觉和generator很像，特殊的函数标识（*/async），和特殊的运算符（yiled/await），不过对于异步函数明显后者两个名字明显让人更好的理解这是一个异步的操作。await会等待post返回的promise对象状态变为fulfilled或者reject然后才继续往下执行。async/await和上面的generator封装的使用promise自动执行的效果和原理都极为相似，他就是将generator的自动执行器封装了起来，做了更好的优化。
 #### 异常处理
 使用async/await时推荐使用try...catch处理异常，因为这样更好的理解和优美，当然也可以通过.catch来捕获错误，但是我们使用aync/await让代码已经看上不很不像‘异步’了，如果用上.catch就不那么完美了。
+## 兼容性
+当我们使用新的API时肯定要考虑API的兼容性,下面整理了一下各个API的兼容性
+### promise
+![enter image description here](https://testfund.10jqka.com.cn/ifundapp_app/public/wzy/testimg/dist/generator.png)
+
+### generator
+![enter image description here](https://testfund.10jqka.com.cn/ifundapp_app/public/wzy/testimg/dist/promise.png)
+
+### async/await
+![enter image description here](https://testfund.10jqka.com.cn/ifundapp_app/public/wzy/testimg/dist/async.png)
+最新的一般游览器都已经兼容了这些属性，如果要兼容低版本可是使用babel编译，但是由于promsie是原生的API所以只能引用ployfill或者重新Promise，async/await和generator是可以经过babel编译兼容低版本，但是async/await是依赖Promise的所以使用时还需要考虑Promise的兼容性。
+
 ## 总结
 上面的几种方式其实都能解决我们的需求，但是从健壮性、可维护性、可读性方面async/await最优，但是由于受游览器环境的兼容限制可以在游览器环境中使用Promise来解决，在node环境中要尽量去拥抱最新的最好的解决方案，回调函数虽然有他的可取之处，但是从长远角度来看，不推荐使用。
