@@ -161,8 +161,9 @@ function generator(fn){
 	function run(data){
 		if(data.done) return
 		data.value.then(data => {
-			a.next(data)
-		})}
+			run(a.next(data))
+		})
+	}
 	run(a.next())
 }
 
