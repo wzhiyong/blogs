@@ -43,12 +43,35 @@
 - 基础类型 -> 基础类型
 
 #### Number <-> String
-数字和字符串之间的转化应该我们平时最常见的转化
-##### Number -> String
+数字和字符串之间的转化应该我们平时最常见的转化。
 
-##### String -> String
+##### Number -> String
+数字转化成字符串的常见：
+- String(1) 根据抽象操作的ToString规则 
+- 1..toString()
+- new Date(1571239714845)
+- 1 + ''  
+
+##### String -> Number
+- Number() 根据抽象操作的ToNumber规则
+- parseInt()、parseFloat()
+- ~'123'
+- +'123'
+- -'123'
+- new Date('2019/10/16')
+#### 解析速度
 
 #### * -> Number
-
+- + +false
+- ~ ~{}
+- Number()
+##### ～运算符
 #### * -> Boolean
+- !1
+- Boolean()
+- if(...) 
+- for(...;...;...)
+- ？：
+- while(...) do...while(...)
+- || && 左边的表达式
 
